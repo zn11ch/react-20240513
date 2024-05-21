@@ -1,0 +1,27 @@
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.restaurants {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.restaurant {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+}
