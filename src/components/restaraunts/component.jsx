@@ -1,4 +1,4 @@
-import { Restarunt } from "../restaraunt/component.jsx";
+import { Restarunt } from "../restaraunt/component";
 
 export const Restarunts = ({ restaurants }) => {
   return (
