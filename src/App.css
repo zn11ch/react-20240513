@@ -25,3 +25,8 @@
   padding: 20px;
   margin-top: 20px;
 }
+
+.btn-active {
+  background-color: #c9c9c9;
+  outline: none;
+}
