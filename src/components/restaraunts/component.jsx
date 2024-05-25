@@ -1,3 +1,4 @@
+import { RestaurantTabs } from "../restaurantTabs/component";
 import { Restarunt } from "../restaraunt/component";
 import { useState } from "react";
 
@@ -10,18 +11,11 @@ export const Restarunts = ({ restaurants }) => {
 
   return (
     <div className="restaraunts">
-      {restaurants.map((restaurant, restaurantIndex) => (
-        <button
-          key={restaurant.id}
-          onClick={() => setActiveRestaurantIndex(restaurantIndex)}
-          className={
-            activeRestaurantIndex === restaurantIndex ? "btn-active" : null
-          }
-        >
-          {restaurant.name}
-        </button>
-      ))}
-
+      <RestaurantTabs
+        restaurants={restaurants}
+        activeRestaurantIndex={activeRestaurantIndex}
+        onTabClick={setActiveRestaurantIndex}
+      />
       <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
     </div>
   );
