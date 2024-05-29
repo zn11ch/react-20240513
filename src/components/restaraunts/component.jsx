@@ -17,6 +17,10 @@ export const Restarunts = ({ restaurants }) => {
         onTabClick={setActiveRestaurantIndex}
       />
       <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
+      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
+      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
+      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
+      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
     </div>
   );
 };
