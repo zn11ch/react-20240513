@@ -1,4 +1,5 @@
 import { Menu } from "../menu/component";
+import { ReviewForm } from "../reviewForm/component";
 import { Reviews } from "../reviews/component";
 
 export const Restarunt = ({ restaurant }) => {
@@ -9,6 +10,7 @@ export const Restarunt = ({ restaurant }) => {
       </h2>
       <Menu dishes={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
+      <ReviewForm />
     </div>
   );
 };
