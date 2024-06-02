@@ -16,8 +16,7 @@ export const ScrollProgressBar = () => {
   }, [onScroll]);
 
   return (
-    <div className="scroll-progress-bar">
-      <div className="progress-bar" ref={elementRef}></div>
+    <div className="scroll-progress-bar" ref={elementRef}>
     </div>
   );
 };
