@@ -6,14 +6,14 @@ export const RestaurantTabs = ({
   onTabClick,
 }) => {
   return (
-    <div>
+    <div className="restaraunt-tabs">
       {restaurants.map((restaurant, restaurantIndex) => (
         <Tab
           key={restaurantIndex} // Add the key prop here
           title={restaurant.name}
           onClick={() => onTabClick(restaurantIndex)}
           className={
-            activeRestaurantIndex === restaurantIndex ? "btn-active" : null
+            activeRestaurantIndex === restaurantIndex ? "active" : null
           }
         />
       ))}

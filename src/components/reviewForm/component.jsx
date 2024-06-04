@@ -25,7 +25,6 @@ const DEFAULT_FORM_VALUES = {
 export const ReviewForm = () => {
   const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUES);
 
-  console.log(form);
 
   return (
     <div>
