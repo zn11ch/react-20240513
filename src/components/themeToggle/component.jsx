@@ -1,20 +1,20 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/theme";
+import { Button } from "../button/component";
+import { useTheme } from "../../contexts/theme/hooks";
 
 export const ThemeToggle = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
 
   const themeChange = (theme) => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
   return (
-    <button
+    <Button
       onClick={() => {
         themeChange(theme);
       }}
     >
       Switch theme
-    </button>
+    </Button>
   );
 };

@@ -1,21 +1,17 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/theme.js";
-import { UserAuthContext } from "../../contexts/user-auth.js";
+import { useUser } from "../../contexts/user/hooks.js";
+import { Button } from "../button/component.jsx";
 
-export const Counter = ({ value, increment, decrement }= {}) => {
-
-  const {theme} = useContext(ThemeContext);
-  const { userAuth } = useContext(UserAuthContext);
+export const Counter = ({ value, increment, decrement } = {}) => {
+  const { user } = useUser();
   return (
     <>
-    { userAuth ? (
-      <div>
-        <button  className={theme} onClick={increment}> + </button>
-        <span> {value} </span>
-        <button  className={theme} onClick={decrement}> - </button>
-      </div>
-    ) : null }
-   </>
-
+      {user ? (
+        <div>
+          <Button onClick={increment}> + </Button>
+          <span> {value} </span>
+          <Button onClick={decrement}> - </Button>
+        </div>
+      ) : null}
+    </>
   );
 };

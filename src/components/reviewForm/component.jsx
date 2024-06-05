@@ -1,3 +1,4 @@
+import { Button } from "../button/component";
 import { Rating } from "../rating/components";
 import { useReducer } from "react";
 
@@ -24,7 +25,6 @@ const DEFAULT_FORM_VALUES = {
 
 export const ReviewForm = () => {
   const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUES);
-
 
   return (
     <div>
@@ -58,7 +58,7 @@ export const ReviewForm = () => {
             });
           }}
         />
-        <button onClick={() => dispatch({ type: "setDefault" })}>Submit</button>
+        <Button onClick={() => dispatch({ type: "setDefault" })}>Submit</Button>
       </div>
     </div>
   );

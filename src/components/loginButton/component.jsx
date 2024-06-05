@@ -1,22 +1,30 @@
-import { useContext, useState } from "react";
-import { UserAuthContext } from "../../contexts/user-auth";
 import { Modal } from "../modal/component";
 import { LoginForm } from "../loginForm/component";
+import { useUser } from "../../contexts/user/hooks";
+import { useCallback, useState } from "react";
 
 export const LoginButton = () => {
-  const { userAuth, setUserAuth} = useContext(UserAuthContext);
+  const { user, setUser } = useUser();
   const [isVisible, setIsVisible] = useState(false);
 
+  const handleClose = useCallback(() => {
+    setIsVisible(false);
+  }, []);
 
   return (
     <>
-      {userAuth ? (
+      {user ? (
         <button
           onClick={() => {
-            setUserAuth(null);
+            setUser(null);
           }}
         >
-          <span style={{ color: '#01b070', fontSize: '18px',  fontWeight: "bold"}}>{userAuth}</span> Logout
+          <span
+            style={{ color: "#01b070", fontSize: "18px", fontWeight: "bold" }}
+          >
+            {user}
+          </span>{" "}
+          Logout
         </button>
       ) : (
         <button
@@ -29,8 +37,8 @@ export const LoginButton = () => {
       )}
 
       {isVisible ? (
-        <Modal setIsVisible={setIsVisible}>
-          <LoginForm />
+        <Modal onClose={handleClose}>
+          <LoginForm onClose={handleClose} />
         </Modal>
       ) : null}
     </>

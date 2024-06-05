@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
-import { UserAuthContext } from "../../contexts/user-auth";
-import { ModalContext } from "../../contexts/modal";
+import { Button } from "../button/component";
+import { useUser } from "../../contexts/user/hooks";
+import { useState } from "react";
 
-export const LoginForm = () => {
-  const [user, setUser] = useState("");
-  const { setUserAuth } = useContext(UserAuthContext);
-  const { closeModal } = useContext(ModalContext);
+export const LoginForm = ({ onClose }) => {
+  const { setUser } = useUser();
+  const [name, setName] = useState("");
 
   return (
     <div className="login-form">
@@ -13,31 +12,31 @@ export const LoginForm = () => {
       <input
         type="text"
         name="username"
-        value={user}
+        value={name}
         onChange={(e) => {
-          setUser(e.target.value);
+          setName(e.target.value);
         }}
       />
       <div>
-        <button
-          disabled={!user}
+        <Button
+          disabled={!name}
           id="login"
           onClick={() => {
-            setUserAuth(user);
-            closeModal();
+            setUser(name);
+            onClose();
           }}
         >
           Login
-        </button>
-        <button
+        </Button>
+        <Button
           id="cancel"
           onClick={() => {
-            setUserAuth(null);
-            closeModal();
+            setUser(null);
+            onClose();
           }}
         >
           Cancel
-        </button>
+        </Button>
       </div>
     </div>
   );
