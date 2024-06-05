@@ -28,14 +28,6 @@
   font-size: 16px;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
-
-.header-buttons button:hover {
-  background-color: #028a59;
 }
 
 /* Footer */
@@ -81,23 +73,13 @@
   flex: 1;
   padding: 10px 20px;
   font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #f9f9f9;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
 }
 
-.restaraunt-tabs button:hover {
-  background-color: #e0e0e0;
-}
 
 .restaraunt-tabs button.active {
-  background-color: #01b070;
-  color: #fff;
+  background-color: #333 !important;
+  color: #fff !important;
 }
-
 
 /* Restaurant Theme */
 button.light {

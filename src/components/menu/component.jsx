@@ -1,11 +1,11 @@
 import { Dishes } from "../dishes/component";
 
-export const Menu = ({ dishes }) => {
+export const Menu = ({ dishesIds }) => {
   return (
-    !!dishes?.length > 0 && (
+    !!dishesIds?.length > 0 && (
       <div className="menu">
         <h3> Menu </h3>
-        <Dishes dishes={dishes} />
+        <Dishes dishesIds={dishesIds} />
       </div>
     )
   );

@@ -1,10 +1,13 @@
 import { useCount } from "../../hooks/use-count"
 import { Counter } from "../counter/component";
 import { Ingredients } from "../ingredients/component";
+import { useSelector } from "react-redux";
+
 const initialValue = 0;
 
-export const Dish = ({ dish }) => {
+export const Dish = ({ disheId }) => {
   const {count, increment, decrement} = useCount(initialValue);
+  const dish = useSelector((state) => state.dishes.entities[disheId]);
 
   return (
     <div>
