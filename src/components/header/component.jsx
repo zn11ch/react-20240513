@@ -8,12 +8,11 @@ export const Header = () => {
       <div className="header">
         <h3>Header</h3>
         <div className="header-buttons">
-        <ThemeToggle />
-        <LoginButton />
+          <ThemeToggle />
+          <LoginButton />
         </div>
       </div>
       <ScrollProgressBar />
     </div>
-    
   );
 };

@@ -16,7 +16,7 @@ export const Rating = ({ initialValue, maxRating = 5, onChange }) => {
               checked={initialValue === value}
             />
           </React.Fragment>
-        )
+        ),
       )}
     </div>
   );

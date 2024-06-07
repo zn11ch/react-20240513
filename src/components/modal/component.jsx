@@ -8,6 +8,6 @@ export const Modal = ({ children, onClose }) => {
         <div className="modal-content">{children}</div>
       </div>
     </>,
-    document.getElementById("modal-root")
+    document.getElementById("modal-root"),
   );
 };
