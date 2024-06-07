@@ -1,10 +1,10 @@
-import { DishesContainer } from "../dishes/container";
+import { Dishes } from "../dishes/component";
 
-export const Menu = ({ restaurantId }) => {
+export const Menu = ({ dishesIds }) => {
   return (
     <div className="menu">
       <h3> Menu </h3>
-      <DishesContainer restaurantId={restaurantId} />
+      <Dishes dishesIds={dishesIds} />
     </div>
   );
 };

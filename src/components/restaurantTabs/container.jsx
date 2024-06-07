@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { RestaurantTabs } from "./component";
+import { selectRestaurantIds } from "../../redux/entities/restaurants/selectors";
 
 export const RestaurantTabsContainer = ({ activeRestaurantId, onTabClick }) => {
-  const restaurantsIds = useSelector((state) => state.restaurants.ids);
+  const restaurantsIds = useSelector(selectRestaurantIds);
 
   return (
     <RestaurantTabs
