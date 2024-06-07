@@ -1,6 +1,6 @@
 import "./App.css";
 // import { restaurants } from "../materials/mock.js";
-import { Restarunts } from "./components/restaraunts/component";
+import { Restaurants } from "./components/restaurants/component.jsx";
 import { Layout } from "./components/layout/component";
 import { ThemeContextProvider } from "./contexts/theme/provider.jsx";
 import { UserContextProvider } from "./contexts/user/provider.jsx";
@@ -15,7 +15,7 @@ function App() {
       <UserContextProvider>
         <ThemeContextProvider>
           <Layout>
-            <Restarunts />
+            <Restaurants />
           </Layout>
         </ThemeContextProvider>
       </UserContextProvider>

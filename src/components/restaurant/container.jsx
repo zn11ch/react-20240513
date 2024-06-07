@@ -3,8 +3,8 @@ import { ReviewForm } from "../reviewForm/component";
 import { Reviews } from "../reviews/component";
 import { useSelector } from "react-redux";
 
-export const Restarunt = ({ restaurantId }) => {
-  const restaurant = useSelector((state) => state.restaraunts.entities[restaurantId]);
+export const RestaurantContainer = ({ restaurantId }) => {
+  const restaurant = useSelector((state) => state.restaurants.entities[restaurantId]);
 
   if (!restaurant) {
     return null;
