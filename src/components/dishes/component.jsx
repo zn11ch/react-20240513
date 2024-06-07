@@ -1,12 +1,11 @@
-import { Dish } from "../dish/component";
+import { DishContainer } from "../dish/container";
 
 export const Dishes = ({ dishesIds }) => {
-
   return (
     <ul className="dishes">
       {dishesIds.map((disheId) => (
         <li key={disheId}>
-          <Dish disheId={disheId} />
+          <DishContainer disheId={disheId} />
         </li>
       ))}
     </ul>

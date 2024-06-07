@@ -1,12 +1,10 @@
-import { Dishes } from "../dishes/component";
+import { DishesContainer } from "../dishes/container";
 
-export const Menu = ({ dishesIds }) => {
+export const Menu = ({ restaurantId }) => {
   return (
-    !!dishesIds?.length > 0 && (
-      <div className="menu">
-        <h3> Menu </h3>
-        <Dishes dishesIds={dishesIds} />
-      </div>
-    )
+    <div className="menu">
+      <h3> Menu </h3>
+      <DishesContainer restaurantId={restaurantId} />
+    </div>
   );
 };
