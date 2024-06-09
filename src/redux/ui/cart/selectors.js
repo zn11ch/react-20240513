@@ -5,6 +5,6 @@ export const selectDishCount = (state, id) => selectCartModule(state)[id] || 0;
 export const selectCartCount = (state) => {
   return Object.values(selectCartModule(state)).reduce(
     (sum, count) => sum + count,
-    0
+    0,
   );
 };

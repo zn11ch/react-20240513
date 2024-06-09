@@ -7,7 +7,7 @@ import { Reviews } from "./component";
 
 export const ReviewsContainer = ({ restaurantId }) => {
   const reviewsIds = useSelector((state) =>
-    selectRestauranReviewIds(state, restaurantId)
+    selectRestauranReviewIds(state, restaurantId),
   );
 
   const dispatch = useDispatch();
@@ -19,8 +19,6 @@ export const ReviewsContainer = ({ restaurantId }) => {
   if (!reviewsIds) {
     return null;
   }
-  
-  return (
-    <Reviews reviewsIds={reviewsIds} />
-  );
+
+  return <Reviews reviewsIds={reviewsIds} />;
 };

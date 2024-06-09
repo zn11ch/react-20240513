@@ -14,12 +14,12 @@ export const DishContainer = ({ disheId }) => {
 
   const handleIncrement = useCallback(
     () => dispatch(increment(disheId)),
-    [dispatch, disheId]
+    [dispatch, disheId],
   );
 
   const handleDecrement = useCallback(
     () => dispatch(decrement(disheId)),
-    [dispatch, disheId]
+    [dispatch, disheId],
   );
 
   if (!dish) {

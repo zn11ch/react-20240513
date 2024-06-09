@@ -11,9 +11,9 @@ export const store = configureStore({
     RestaurantsSlice,
     UsersSlice,
     ReviewsSlice,
-    CartSlice, 
+    CartSlice,
   ),
-  middleware: ( getDefaultMiddleware ) => getDefaultMiddleware(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 console.log(store.getState());

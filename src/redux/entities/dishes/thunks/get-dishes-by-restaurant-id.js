@@ -8,7 +8,7 @@ export const getDishesByRestaurantId = createAsyncThunk(
   "dish/getDishesByRestaurantId",
   async (restaurantId) => {
     const response = await fetch(
-      `http://localhost:3001/api/dishes?restaurantId=${restaurantId}`
+      `http://localhost:3001/api/dishes?restaurantId=${restaurantId}`,
     );
 
     return response.json();
@@ -21,5 +21,5 @@ export const getDishesByRestaurantId = createAsyncThunk(
 
       return restaurantDishIds.some((id) => !loadedDishIds.includes(id));
     },
-  }
+  },
 );

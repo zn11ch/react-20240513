@@ -9,7 +9,7 @@ export const MenuContainer = ({ restaurantId }) => {
   const dispatch = useDispatch();
 
   const dishesIds = useSelector((state) =>
-    selectRestauranDishIds(state, restaurantId)
+    selectRestauranDishIds(state, restaurantId),
   );
 
   useEffect(() => {

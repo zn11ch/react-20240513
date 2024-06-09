@@ -9,7 +9,7 @@ import { Restaurant } from "./component";
 
 export const RestaurantContainer = ({ restaurantId }) => {
   const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
+    selectRestaurantById(state, restaurantId),
   );
 
   const dispatch = useDispatch();
@@ -24,5 +24,7 @@ export const RestaurantContainer = ({ restaurantId }) => {
 
   const restaurantName = restaurant.name;
 
-  return <Restaurant restaurantName={restaurantName} restaurantId={restaurantId} />;
+  return (
+    <Restaurant restaurantName={restaurantName} restaurantId={restaurantId} />
+  );
 };

@@ -1,7 +1,6 @@
 import { ReviewContainer } from "../review/container";
 
 export const Reviews = ({ reviewsIds }) => {
-
   return (
     !!reviewsIds?.length > 0 && (
       <div className="reviews">
