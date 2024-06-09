@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { Button } from "../button/component";
 import { Modal } from "../modal/component";
 import { useUser } from "../../contexts/user/hooks";
-import { Cart } from "../cart/component";
+import { CartContainer } from "../cart/container";
 
 export const CartButton = ({ count }) => {
   const { user } = useUser();
@@ -26,7 +26,7 @@ export const CartButton = ({ count }) => {
 
       {isVisible ? (
         <Modal onClose={handleClose}>
-          <Cart />
+          <CartContainer />
         </Modal>
       ) : null}
     </>

@@ -4,7 +4,7 @@ export const Menu = ({ dishesIds }) => {
   return dishesIds.length === 0 ? (
     <div>No dishes available</div>
   ) : (
-    !!dishesIds.length && (
+    !!dishesIds.length > 0 && (
       <div>
         <h3>Menu</h3>
         <Dishes dishesIds={dishesIds} />
