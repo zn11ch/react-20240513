@@ -1,8 +1,7 @@
 import { ScrollProgressBar } from "../scroll-progress-bar/component";
 import { ThemeToggle } from "../themeToggle/component.jsx";
 import { LoginButton } from "../loginButton/component.jsx";
-
-import { CartButton } from "../cartButton/component.jsx";
+import { CartButtonContainer } from "../cartButton/container.jsx";
 
 export const Header = () => {
   return (
@@ -12,7 +11,7 @@ export const Header = () => {
         <div className="header-buttons">
           <ThemeToggle />
           <LoginButton />
-          <CartButton />
+          <CartButtonContainer />
         </div>
       </div>
       <ScrollProgressBar />

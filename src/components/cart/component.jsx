@@ -1,17 +1,15 @@
-import { useSelector } from "react-redux";
-import { selectCartModule } from "../../redux/ui/cart/selectors";
 import { CartItem } from "../cartItem/component";
 
-export const Cart = () => {
-  const cartItems = useSelector((state) => selectCartModule(state));
-
+export const Cart = ({ cartItems }) => {
   return (
-    <div>
-      <h3>Cart</h3>
+    !!cartItems.lenth > 0 && (
+      <div>
+        <h3>Cart</h3>
 
-      {Object.entries(cartItems).map(([key, value]) => (
-        <CartItem key={key} item={key} value={value} />
-      ))}
-    </div>
+        {Object.entries(cartItems).map(([dishId, dishCount]) => (
+          <CartItem key={dishId} id={dishId} dishCount={dishCount} />
+        ))}
+      </div>
+    )
   );
 };
