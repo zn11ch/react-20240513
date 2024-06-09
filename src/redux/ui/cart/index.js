@@ -13,14 +13,12 @@ export const CartSlice = createSlice({
       }
       state[payload] = state[payload] - 1;
 
-      if(state[payload] < 0) {
-        console.log("ADFADFDAF", state)
-        delete state[payload]
+      if (state[payload] < 0) {
+        delete state[payload];
       }
     },
     clear: () => {},
   },
 });
-
 
 export const { increment, decrement, clear } = CartSlice.actions;

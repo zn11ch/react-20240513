@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Restaurant } from "../restaurant/component";
 import { RestaurantTabs } from "../restaurantTabs/component";
+import { RestaurantContainer } from "../restaurant/container";
 
 export const Restaurants = ({ restaurantsIds }) => {
   const [activeRestaurantId, setActiveRestaurantIndex] = useState(
@@ -14,7 +14,7 @@ export const Restaurants = ({ restaurantsIds }) => {
         activeRestaurantId={activeRestaurantId}
         onTabClick={setActiveRestaurantIndex}
       />
-      <Restaurant restaurantId={activeRestaurantId} />
+      <RestaurantContainer restaurantId={activeRestaurantId} />
     </div>
   );
 };

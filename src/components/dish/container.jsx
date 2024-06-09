@@ -22,6 +22,10 @@ export const DishContainer = ({ disheId }) => {
     [dispatch, disheId]
   );
 
+  if (!dish) {
+    return null;
+  }
+
   return (
     <Dish
       dish={dish}
