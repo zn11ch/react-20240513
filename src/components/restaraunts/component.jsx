@@ -1,26 +1,26 @@
 import { RestaurantTabs } from "../restaurantTabs/component";
 import { Restarunt } from "../restaraunt/component";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-export const Restarunts = ({ restaurants }) => {
-  const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
+export const Restarunts = () => {
+  const restaurantsIds = useSelector((state) => state.restaraunts.ids);
+  const [activeRestaurantId, setActiveRestaurantIndex] = useState(
+    restaurantsIds[0]
+  );
 
-  if (!restaurants || !restaurants?.length) {
+  if (!restaurantsIds || !restaurantsIds?.length) {
     return null;
   }
 
   return (
     <div className="restaraunts">
       <RestaurantTabs
-        restaurants={restaurants}
-        activeRestaurantIndex={activeRestaurantIndex}
+        restaurantsIds={restaurantsIds}
+        activeRestaurantId={activeRestaurantId}
         onTabClick={setActiveRestaurantIndex}
       />
-      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
-      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
-      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
-      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
-      <Restarunt restaurant={restaurants[activeRestaurantIndex]} />
+      <Restarunt restaurantId={activeRestaurantId} />
     </div>
   );
 };

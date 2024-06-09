@@ -1,14 +1,14 @@
 import { Review } from "../review/component";
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ reviewsIds }) => {
   return (
-    !!reviews?.length > 0 && (
+    !!reviewsIds?.length > 0 && (
       <div className="reviews">
         <h4> Reviews </h4>
         <ul>
-          {reviews.map((review) => (
-            <li key={review.id}>
-              <Review review={review} />
+          {reviewsIds.map((reviewId) => (
+            <li key={reviewId}>
+              <Review reviewId={reviewId} />
             </li>
           ))}
         </ul>

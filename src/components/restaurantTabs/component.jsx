@@ -1,20 +1,18 @@
-import { Tab } from "../tab/components";
+import { Tab } from "../RestarauntTab/components";
 
 export const RestaurantTabs = ({
-  restaurants,
-  activeRestaurantIndex,
+  restaurantsIds,
+  activeRestaurantId,
   onTabClick,
 }) => {
   return (
     <div className="restaraunt-tabs">
-      {restaurants.map((restaurant, restaurantIndex) => (
+      {restaurantsIds?.map((restaurantId) => (
         <Tab
-          key={restaurantIndex} // Add the key prop here
-          title={restaurant.name}
-          onClick={() => onTabClick(restaurantIndex)}
-          className={
-            activeRestaurantIndex === restaurantIndex ? "active" : null
-          }
+          restaurantId={restaurantId}
+          key={restaurantId}
+          onClick={() => onTabClick(restaurantId)}
+          className={activeRestaurantId === restaurantId ? "active" : null}
         />
       ))}
     </div>

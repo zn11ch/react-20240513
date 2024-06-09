@@ -2,6 +2,7 @@ import { Modal } from "../modal/component";
 import { LoginForm } from "../loginForm/component";
 import { useUser } from "../../contexts/user/hooks";
 import { useCallback, useState } from "react";
+import { Button } from "../button/component";
 
 export const LoginButton = () => {
   const { user, setUser } = useUser();
@@ -14,7 +15,7 @@ export const LoginButton = () => {
   return (
     <>
       {user ? (
-        <button
+        <Button
           onClick={() => {
             setUser(null);
           }}
@@ -25,15 +26,15 @@ export const LoginButton = () => {
             {user}
           </span>{" "}
           Logout
-        </button>
+        </Button>
       ) : (
-        <button
+        <Button
           onClick={() => {
             setIsVisible(!isVisible);
           }}
         >
           Login
-        </button>
+        </Button>
       )}
 
       {isVisible ? (
