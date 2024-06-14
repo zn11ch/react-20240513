@@ -33,7 +33,7 @@ export const ReviewContainer = ({ review }) => {
       user={user}
       review={review}
       onClickSave={handleReviewSave}
-      onClickCancle={handleReviewCancel}
+      onClickCancel={handleReviewCancel}
       editing={editing}
       setEditing={setEditing}
     />

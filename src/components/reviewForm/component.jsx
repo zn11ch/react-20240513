@@ -37,7 +37,7 @@ export const ReviewForm = ({
     onClickCancel = onDefaultClickCancel;
   }
 
-  const handleClick = useCallback(() => {
+  const handleClickSave = useCallback(() => {
     onClickSave(form);
     dispatch({ type: "setDefault" });
   }, [form, onClickSave]);
@@ -64,7 +64,7 @@ export const ReviewForm = ({
             });
           }}
         />
-        <Button onClick={handleClick} disabled={form.text === ""}>
+        <Button onClick={handleClickSave} disabled={form.text === ""}>
           Save
         </Button>
         <Button onClick={onClickCancel}>Cancel</Button>
