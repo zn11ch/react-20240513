@@ -1,21 +1,25 @@
-import { useSelector } from "react-redux";
 import { Restaurants } from "./component";
-import { useDispatch } from "react-redux";
-import { getRestaurants } from "../../redux/entities/restaurants/thunks/get-restaurants";
-import { useEffect } from "react";
-import { selectRestaurantIds } from "../../redux/entities/restaurants/selectors";
+import { useGetRestaurantsQuery, useGetUsersQuery } from "../../redux/service/api";
 
 export const RestaurantsContainer = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getRestaurants());
+  // }, [dispatch]);
 
-  const restaurantsIds = useSelector(selectRestaurantIds);
+  // const restaurantsIds = useSelector(selectRestaurantIds);
 
-  if (!restaurantsIds || !restaurantsIds?.length) {
-    return null;
-  }
 
-  return <Restaurants restaurantsIds={restaurantsIds} />;
+
+  // if (isLoading || isFetching) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (!restaurants || !restaurants?.length) {
+  //   return null;
+  // }
+
+  
+
+  return <Restaurants />;
 };

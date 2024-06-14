@@ -1,12 +1,12 @@
 import { DishContainer } from "../dish/container";
 
-export const Dishes = ({ dishesIds }) => {
+export const Dishes = ({ dishes }) => {
   return (
-    !!dishesIds?.length > 0 && (
+    !!dishes?.length > 0 && (
       <ul className="dishes">
-        {dishesIds.map((disheId) => (
-          <li key={disheId}>
-            <DishContainer disheId={disheId} />
+        {dishes.map((dish) => (
+          <li key={dish.id}>
+            <DishContainer dish={dish} />
           </li>
         ))}
       </ul>

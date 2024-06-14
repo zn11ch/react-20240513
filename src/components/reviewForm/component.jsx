@@ -4,8 +4,6 @@ import { useReducer } from "react";
 
 function reducer(state, { type, payload }) {
   switch (type) {
-    case "setName":
-      return { ...state, name: payload };
     case "setText":
       return { ...state, text: payload };
     case "setRating":
@@ -18,27 +16,29 @@ function reducer(state, { type, payload }) {
 }
 
 const DEFAULT_FORM_VALUES = {
-  name: "",
   text: "",
   rating: 1,
 };
 
-export const ReviewForm = () => {
-  const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUES);
+
+
+export const ReviewForm = ({
+  initialValue = DEFAULT_FORM_VALUES,
+  onClickSave,
+  onClickCancel
+
+}) => {
+  const [form, dispatch] = useReducer(reducer, initialValue);
+
+  const onDefaultClickCancel = () =>  dispatch({type: "setDefault" })
+
+  if(!onClickCancel) {
+    onClickCancel = onDefaultClickCancel
+  }
 
   return (
     <div>
       <div>
-        <div>
-          <span>Name </span>
-          <input
-            type="text"
-            value={form.name}
-            onChange={(event) =>
-              dispatch({ type: "setName", payload: event.target.value })
-            }
-          />
-        </div>
         <div>
           <span>Text </span>
           <input
@@ -58,7 +58,8 @@ export const ReviewForm = () => {
             });
           }}
         />
-        <Button onClick={() => dispatch({ type: "setDefault" })}>Submit</Button>
+        <Button onClick={() => onClickSave(form)}>Save</Button>
+        <Button onClick={onClickCancel}>Cancel</Button>
       </div>
     </div>
   );

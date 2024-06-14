@@ -1,24 +1,17 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getReviewsByRestaurantId } from "../../redux/entities/reviews/thunks/get-reviews-by-restaurant-id";
-import { useSelector } from "react-redux";
-import { selectRestauranReviewIds } from "../../redux/entities/restaurants/selectors";
 import { Reviews } from "./component";
+import { useGetReviewsByRestaurantIdQuery } from "../../redux/service/api";
 
 export const ReviewsContainer = ({ restaurantId }) => {
-  const reviewsIds = useSelector((state) =>
-    selectRestauranReviewIds(state, restaurantId),
-  );
+  const { data: reviews, isLoading } =
+    useGetReviewsByRestaurantIdQuery(restaurantId);
 
-  const dispatch = useDispatch();
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
 
-  useEffect(() => {
-    dispatch(getReviewsByRestaurantId(restaurantId));
-  }, [dispatch, restaurantId]);
-
-  if (!reviewsIds) {
+  if (!reviews || !reviews.length) {
     return null;
   }
 
-  return <Reviews reviewsIds={reviewsIds} />;
+  return <Reviews reviews={reviews} />;
 };
