@@ -1,6 +1,6 @@
 import { Button } from "../button/component";
 import { Rating } from "../rating/components";
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 
 function reducer(state, { type, payload }) {
   switch (type) {
@@ -18,6 +18,7 @@ function reducer(state, { type, payload }) {
 const DEFAULT_FORM_VALUES = {
   text: "",
   rating: 1,
+  user: "a304959a-76c0-4b34-954a-b38dbf310360",
 };
 
 export const ReviewForm = ({
@@ -27,11 +28,19 @@ export const ReviewForm = ({
 }) => {
   const [form, dispatch] = useReducer(reducer, initialValue);
 
-  const onDefaultClickCancel = () => dispatch({ type: "setDefault" });
+  const onDefaultClickCancel = useCallback(
+    () => dispatch({ type: "setDefault" }),
+    [],
+  );
 
   if (!onClickCancel) {
     onClickCancel = onDefaultClickCancel;
   }
+
+  const handleClick = useCallback(() => {
+    onClickSave(form);
+    dispatch({ type: "setDefault" });
+  }, [form, onClickSave]);
 
   return (
     <div>
@@ -55,7 +64,9 @@ export const ReviewForm = ({
             });
           }}
         />
-        <Button onClick={() => onClickSave(form)}>Save</Button>
+        <Button onClick={handleClick} disabled={form.text === ""}>
+          Save
+        </Button>
         <Button onClick={onClickCancel}>Cancel</Button>
       </div>
     </div>

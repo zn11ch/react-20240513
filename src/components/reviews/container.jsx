@@ -2,10 +2,13 @@ import { Reviews } from "./component";
 import { useGetReviewsByRestaurantIdQuery } from "../../redux/service/api";
 
 export const ReviewsContainer = ({ restaurantId }) => {
-  const { data: reviews, isLoading } =
-    useGetReviewsByRestaurantIdQuery(restaurantId);
+  const {
+    data: reviews,
+    isLoading,
+    isFetching,
+  } = useGetReviewsByRestaurantIdQuery(restaurantId);
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <div>Loading ...</div>;
   }
 
