@@ -1,11 +1,9 @@
 import { Button } from "../button/component";
 import { Rating } from "../rating/components";
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 
 function reducer(state, { type, payload }) {
   switch (type) {
-    case "setName":
-      return { ...state, name: payload };
     case "setText":
       return { ...state, text: payload };
     case "setRating":
@@ -18,27 +16,35 @@ function reducer(state, { type, payload }) {
 }
 
 const DEFAULT_FORM_VALUES = {
-  name: "",
   text: "",
   rating: 1,
+  user: "a304959a-76c0-4b34-954a-b38dbf310360",
 };
 
-export const ReviewForm = () => {
-  const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUES);
+export const ReviewForm = ({
+  initialValue = DEFAULT_FORM_VALUES,
+  onClickSave,
+  onClickCancel,
+}) => {
+  const [form, dispatch] = useReducer(reducer, initialValue);
+
+  const onDefaultClickCancel = useCallback(
+    () => dispatch({ type: "setDefault" }),
+    [],
+  );
+
+  if (!onClickCancel) {
+    onClickCancel = onDefaultClickCancel;
+  }
+
+  const handleClick = useCallback(() => {
+    onClickSave(form);
+    dispatch({ type: "setDefault" });
+  }, [form, onClickSave]);
 
   return (
     <div>
       <div>
-        <div>
-          <span>Name </span>
-          <input
-            type="text"
-            value={form.name}
-            onChange={(event) =>
-              dispatch({ type: "setName", payload: event.target.value })
-            }
-          />
-        </div>
         <div>
           <span>Text </span>
           <input
@@ -58,7 +64,10 @@ export const ReviewForm = () => {
             });
           }}
         />
-        <Button onClick={() => dispatch({ type: "setDefault" })}>Submit</Button>
+        <Button onClick={handleClick} disabled={form.text === ""}>
+          Save
+        </Button>
+        <Button onClick={onClickCancel}>Cancel</Button>
       </div>
     </div>
   );

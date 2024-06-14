@@ -1,15 +1,15 @@
 import { useCallback } from "react";
-import { selectDishById } from "../../redux/entities/dishes/selectors";
 import { Dish } from "./component";
 import { useSelector } from "react-redux";
 import { decrement, increment } from "../../redux/ui/cart";
 import { useDispatch } from "react-redux";
 import { selectDishCount } from "../../redux/ui/cart/selectors";
 
-export const DishContainer = ({ disheId }) => {
-  const dish = useSelector((state) => selectDishById(state, disheId));
+export const DishContainer = ({ dish }) => {
+  const disheId = dish.id;
 
   const count = useSelector((state) => selectDishCount(state, disheId));
+
   const dispatch = useDispatch();
 
   const handleIncrement = useCallback(

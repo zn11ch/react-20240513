@@ -1,14 +1,32 @@
-import { useSelector } from "react-redux";
-import { selectUserById } from "../../redux/entities/users/selectors";
+import { ReviewForm } from "../reviewForm/component";
 
-export const Review = ({ review }) => {
-  const user = useSelector((state) => selectUserById(state, review.userId));
-  return (
+import { useUser } from "../../contexts/user/hooks";
+
+export const Review = ({
+  review,
+  user,
+  onClickSave,
+  onClickCancel,
+  editing,
+  setEditing,
+}) => {
+  const { user: authUser } = useUser();
+
+  return editing ? (
+    <ReviewForm
+      initialValue={review}
+      onClickSave={onClickSave}
+      onClickCancel={onClickCancel}
+    />
+  ) : (
     <div className="review">
-      <div>
+      <div key={review.id}>
         {user ? `User: ${user.name},` : ""} Review:{" "}
         {review.text ? review.text : "no review yet"}, Rating:{" "}
         {review.rating ? review.rating : "no rating"}
+        {authUser ? (
+          <button onClick={() => setEditing(true)}>Edit</button>
+        ) : null}
       </div>
     </div>
   );

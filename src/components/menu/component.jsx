@@ -1,13 +1,13 @@
 import { Dishes } from "../dishes/component";
 
-export const Menu = ({ dishesIds }) => {
-  return dishesIds.length === 0 ? (
+export const Menu = ({ dishes }) => {
+  return dishes.length === 0 ? (
     <div>No dishes available</div>
   ) : (
-    !!dishesIds.length > 0 && (
+    !!dishes.length > 0 && (
       <div>
         <h3>Menu</h3>
-        <Dishes dishesIds={dishesIds} />
+        <Dishes dishes={dishes} />
       </div>
     )
   );
