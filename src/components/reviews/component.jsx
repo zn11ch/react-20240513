@@ -8,7 +8,7 @@ export const Reviews = ({ reviews }) => {
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>
-               <ReviewContainer review={review} />
+              <ReviewContainer review={review} />
             </li>
           ))}
         </ul>

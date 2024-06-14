@@ -4,7 +4,7 @@ import { ThemeContextProvider } from "./contexts/theme/provider.jsx";
 import { UserContextProvider } from "./contexts/user/provider.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/index.js";
-import { RestaurantsContainer } from "./components/restaurants/container.jsx";
+import { Restaurants } from "./components/restaurants/component";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <UserContextProvider>
         <ThemeContextProvider>
           <Layout>
-            <RestaurantsContainer />
+            <Restaurants />
           </Layout>
         </ThemeContextProvider>
       </UserContextProvider>

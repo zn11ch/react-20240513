@@ -20,20 +20,17 @@ const DEFAULT_FORM_VALUES = {
   rating: 1,
 };
 
-
-
 export const ReviewForm = ({
   initialValue = DEFAULT_FORM_VALUES,
   onClickSave,
-  onClickCancel
-
+  onClickCancel,
 }) => {
   const [form, dispatch] = useReducer(reducer, initialValue);
 
-  const onDefaultClickCancel = () =>  dispatch({type: "setDefault" })
+  const onDefaultClickCancel = () => dispatch({ type: "setDefault" });
 
-  if(!onClickCancel) {
-    onClickCancel = onDefaultClickCancel
+  if (!onClickCancel) {
+    onClickCancel = onDefaultClickCancel;
   }
 
   return (

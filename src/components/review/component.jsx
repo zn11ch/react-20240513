@@ -9,7 +9,7 @@ export const Review = ({ review, userM }) => {
   const [editReview] = useEditReviewMutation();
   const { user } = useUser();
 
-  console.log(user)
+  console.log(user);
   const reviewId = review.id;
 
   const reviewForm = (
@@ -18,7 +18,7 @@ export const Review = ({ review, userM }) => {
         {userM ? `User: ${userM.name},` : ""} Review:{" "}
         {review.text ? review.text : "no review yet"}, Rating:{" "}
         {review.rating ? review.rating : "no rating"}
-        { user ? <button onClick={() => setIditing(true)}>Edit</button> : null }
+        {user ? <button onClick={() => setIditing(true)}>Edit</button> : null}
       </div>
     </div>
   );
@@ -34,7 +34,7 @@ export const Review = ({ review, userM }) => {
     setIditing(false);
   };
 
-  return editing  ? (
+  return editing ? (
     <ReviewForm
       initialValue={review}
       onClickSave={handleReviewSave}

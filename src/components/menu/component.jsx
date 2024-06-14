@@ -1,7 +1,6 @@
 import { Dishes } from "../dishes/component";
 
 export const Menu = ({ dishes }) => {
-  
   return dishes.length === 0 ? (
     <div>No dishes available</div>
   ) : (

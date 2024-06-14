@@ -7,7 +7,7 @@ export const useRequest = (thunk, ...params) => {
   const [request, setRequest] = useState();
 
   const status = useSelector((state) =>
-    selectRequestStatus(state, request?.requestId)
+    selectRequestStatus(state, request?.requestId),
   );
 
   const dispatch = useDispatch();
