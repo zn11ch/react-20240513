@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
+import { selectUserById } from "../../redux/entities/users/selectors";
 
-export const Review = ({ reviewId }) => {
-  const review = useSelector((state) => state.reviews.entities[reviewId]);
-  const user = useSelector((state) => state.users.entities[review.userId]);
-
+export const Review = ({ review }) => {
+  const user = useSelector((state) => selectUserById(state, review.userId));
   return (
     <div className="review">
       <div>

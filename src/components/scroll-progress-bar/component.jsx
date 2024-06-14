@@ -15,8 +15,5 @@ export const ScrollProgressBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
 
-  return (
-    <div className="scroll-progress-bar" ref={elementRef}>
-    </div>
-  );
+  return <div className="scroll-progress-bar" ref={elementRef}></div>;
 };

@@ -13,7 +13,7 @@ export const UserContextProvider = ({ children }) => {
       user,
       setUser,
     }),
-    [user]
+    [user],
   );
 
   // note: we are passing the context value to the provider wrapped in useMemo to avoid creating a new object  and triggering a re-render all child components every time when the user changes
