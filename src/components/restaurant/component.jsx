@@ -1,18 +1,13 @@
-import {
-  useCreateReviewMutation,
-  useGetRestaurantsQuery,
-} from "../../redux/service/api";
+import { Outlet, useParams } from "react-router-dom";
+import { useGetRestaurantsQuery } from "../../redux/service/api";
 import { selectEntityFromResult } from "../../redux/service/selectors";
-import { MenuContainer } from "../menu/container";
-import { ReviewForm } from "../reviewForm/component";
-import { ReviewsContainer } from "../reviews/container";
+import { Tab } from "../tab/component";
 
-export const Restaurant = ({ restaurantId }) => {
+export const Restaurant = () => {
+  const { restaurantId } = useParams();
   const { data: restaurant, isLoading } = useGetRestaurantsQuery(undefined, {
     selectFromResult: selectEntityFromResult(restaurantId),
   });
-
-  const [createReview] = useCreateReviewMutation();
 
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -22,16 +17,6 @@ export const Restaurant = ({ restaurantId }) => {
     return <div>No restaurant</div>;
   }
 
-  const handleReviewSave = (form) => {
-    createReview({
-      restaurantId,
-      newReview: {
-        ...form,
-        user: "adfadfadf",
-      },
-    });
-  };
-
   return (
     <div className="restaurant">
       <div>
@@ -39,9 +24,10 @@ export const Restaurant = ({ restaurantId }) => {
           <a href="#"> {restaurant.name}</a>
         </h2>
 
-        <MenuContainer restaurantId={restaurantId} />
-        <ReviewsContainer restaurantId={restaurantId} />
-        <ReviewForm restaurant={restaurant} onClickSave={handleReviewSave} />
+        <Tab title="Menu" to={`/restaurants/${restaurantId}/menu`} />
+        <Tab title="Reviews" to={`/restaurants/${restaurantId}/reviews`} />
+
+        <Outlet />
       </div>
     </div>
   );

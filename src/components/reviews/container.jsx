@@ -1,12 +1,20 @@
 import { Reviews } from "./component";
-import { useGetReviewsByRestaurantIdQuery } from "../../redux/service/api";
+import {
+  useCreateReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+} from "../../redux/service/api";
+import { useParams } from "react-router-dom";
+import { ReviewForm } from "../reviewForm/component";
 
-export const ReviewsContainer = ({ restaurantId }) => {
+export const ReviewsContainer = () => {
+  const { restaurantId } = useParams();
   const {
     data: reviews,
     isLoading,
     isFetching,
   } = useGetReviewsByRestaurantIdQuery(restaurantId);
+
+  const [createReview] = useCreateReviewMutation();
 
   if (isLoading || isFetching) {
     return <div>Loading ...</div>;
@@ -16,5 +24,20 @@ export const ReviewsContainer = ({ restaurantId }) => {
     return null;
   }
 
-  return <Reviews reviews={reviews} />;
+  const handleReviewSave = (form) => {
+    createReview({
+      restaurantId,
+      newReview: {
+        ...form,
+        userId: "a304959a-76c0-4b34-954a-b38dbf310360",
+      },
+    });
+  };
+
+  return (
+    <>
+      <Reviews reviews={reviews} />
+      <ReviewForm onClickSave={handleReviewSave} />
+    </>
+  );
 };

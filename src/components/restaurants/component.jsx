@@ -1,17 +1,11 @@
-import { useState } from "react";
 import { RestaurantTabs } from "../restaurantTabs/component";
-import { Restaurant } from "../restaurant/component";
+import { Outlet } from "react-router-dom";
 
 export const Restaurants = () => {
-  const [activeRestaurant, setActiveRestaurant] = useState();
-
   return (
     <div className="restaurants">
-      <RestaurantTabs
-        activeRestaurantId={activeRestaurant}
-        onTabClick={setActiveRestaurant}
-      />
-      {activeRestaurant && <Restaurant restaurantId={activeRestaurant} />}
+      <RestaurantTabs />
+      <Outlet />
     </div>
   );
 };

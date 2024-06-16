@@ -1,8 +1,12 @@
+import { useSearchParams } from "react-router-dom";
 import { useGetRestaurantsQuery } from "../../redux/service/api";
 import { Tab } from "../tab/component";
 
-export const RestaurantTabs = ({ activeRestaurant, onTabClick }) => {
+export const RestaurantTabs = () => {
   const { data: restaurants, isLoading } = useGetRestaurantsQuery();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchValue = searchParams.get("search") || "";
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -14,14 +18,18 @@ export const RestaurantTabs = ({ activeRestaurant, onTabClick }) => {
 
   return (
     <div className="restaraunt-tabs">
-      {restaurants?.map(({ name, id }) => (
-        <Tab
-          title={name}
-          key={id}
-          onClick={() => onTabClick(id)}
-          className={activeRestaurant === id ? "active" : null}
-        />
-      ))}
+      <input
+        value={searchValue}
+        onChange={(event) => setSearchParams({ search: event.target.value })}
+      />
+      {restaurants
+        .filter(
+          ({ name }) =>
+            name.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1,
+        )
+        .map(({ name, id }) => (
+          <Tab title={name} key={id} to={`${id}`} />
+        ))}
     </div>
   );
 };
