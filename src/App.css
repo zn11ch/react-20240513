@@ -38,6 +38,18 @@
   margin-top: 20px;
 }
 
+button {
+  margin: 0.5em;
+  cursor: pointer;
+
+}
+
+.active button  {
+  background-color: #ff6347 !important;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* Progress Scroll */
 
 .scroll-progress-bar {
@@ -182,4 +194,36 @@ button.dark {
   background-color: #ccc;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+
+.header-menu {
+  display: flex;
+  flex-grow: 1;
+  background-color: #333;
+  padding: 1em 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-menu div {
+  margin: 0 1em;
+}
+
+.header-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.header-menu a:hover {
+  color: #ff6347;
+}
+
+.header-menu div {
+  padding: 0.5em 1em;
+}
+
+.header-menu a {
+  display: block;
 }

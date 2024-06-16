@@ -1,9 +1,10 @@
+import { NavLink } from "react-router-dom";
 import { Button } from "../button/component";
 
-export const Tab = ({ title, onClick, isActive, className }) => {
+export const Tab = ({ title, to }) => {
   return (
-    <Button onClick={onClick} disabled={isActive} className={className}>
-      {title}
-    </Button>
+    <NavLink to={to} className={({ isActive }) => (isActive ? "active" : null)}>
+      <Button>{title}</Button>
+    </NavLink>
   );
 };
