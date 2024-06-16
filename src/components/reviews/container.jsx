@@ -37,7 +37,7 @@ export const ReviewsContainer = () => {
   return (
     <>
       <Reviews reviews={reviews} />
-      <ReviewForm r onClickSave={handleReviewSave} />
+      <ReviewForm onClickSave={handleReviewSave} />
     </>
   );
 };
